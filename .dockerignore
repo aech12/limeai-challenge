@@ -1,0 +1,24 @@
+Ignore common development files and node modules at the root
+
+node_modules
+.env
+.git
+.gitignore
+
+Ignore build output directories
+
+dist
+build
+public
+
+Ignore specific development/runtime files
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+Ignore sub-project specific ignores
+
+server/dist
+client/dist
