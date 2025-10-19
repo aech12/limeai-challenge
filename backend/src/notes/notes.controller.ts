@@ -1,4 +1,13 @@
-import { Controller, Post, Get, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Param,
+  Body,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { NotesService } from './notes.service';
 import { Note } from './note.entity';
 
@@ -7,11 +16,17 @@ export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
   @Post('patient/:patient_id')
+  @UseInterceptors(FileInterceptor('audio'))
   async create(
     @Param('patient_id') patient_id: string,
-    @Body() data: { text_content?: string; audio_url?: string },
+    @UploadedFile() file?: Express.Multer.File,
+    @Body('text_content') text_content?: string,
   ): Promise<Note> {
-    return this.notesService.create(parseInt(patient_id, 10), data);
+    return this.notesService.create(
+      parseInt(patient_id, 10),
+      { text_content },
+      file,
+    );
   }
 
   @Get('patient/:patient_id')
