@@ -1,0 +1,67 @@
+.container {
+  margin-top: 24px;
+}
+
+.container h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.empty {
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+.notesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.noteItem {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.noteDate {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.noteContent {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.noteContent p {
+  margin: 8px 0;
+}
+
+.audioIndicator {
+  color: #7c3aed;
+  font-style: italic;
+}
+
+.section {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.section strong {
+  display: block;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.section p {
+  margin: 0;
+  color: #6b7280;
+}
