@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: patients_db
+    container_name: aipatients_db
     environment:
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
@@ -20,6 +20,21 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com  # Change this to your email
+      PGADMIN_DEFAULT_PASSWORD: admin         # Change this to a secure password
+    ports:
+      - "5050:80"  # Access pgAdmin at http://localhost:5050
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin  # Optional: Persist pgAdmin config
+    networks:
+      - app-network
+    depends_on:
+      - postgres
 
   backend:
     build:
@@ -59,6 +74,7 @@ services:
 
 volumes:
   postgres_data:
+  pgadmin_data:
 
 networks:
   app-network:

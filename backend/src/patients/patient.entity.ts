@@ -3,7 +3,9 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { Note } from '../notes/note.entity';
 
 @Entity('patients')
 export class Patient {
@@ -33,4 +35,7 @@ export class Patient {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @OneToMany(() => Note, (note) => note.patient, { eager: true })
+  notes: Note[];
 }

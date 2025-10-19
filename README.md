@@ -10,17 +10,17 @@ A full-stack application with NestJS backend and React frontend, both containeri
 ## Quick Start
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-cd my-app
-
-# Build and run containers
+# Build and run containers on the base folder
 docker-compose up --build
 ```
 
 The application will be available at:
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:3001
+
+## Environment Variables
+
+Create `.env` files for the frontend and backend based on the `.env.example` files
 
 ## Project Structure
 
@@ -50,22 +50,6 @@ docker-compose restart backend
 docker-compose build
 ```
 
-## Development
-
-### Backend
-- Location: `backend/`
-- Runs on port 3001
-- Hot-reload enabled
-- Edit files in `backend/src/`
-
-### Frontend
-- Location: `frontend/`
-- Runs on port 3000
-- Edit files in `frontend/src/`
-
-## Environment Variables
-
-Create a `.env` file in the root directory if needed:
 
 ```
 NODE_ENV=development
@@ -87,18 +71,3 @@ NODE_ENV=development
 ---
 
 **Need help?** Check the logs with `docker-compose logs` or refer to the troubleshooting section above.
-
-
-## Usefule docker commands
-
-# Stop containers
-docker-compose down
-
-# View logs
-docker-compose logs -f
-
-# Rebuild specific service
-docker-compose up --build backend
-
-# Run in detached mode
-docker-compose up -d

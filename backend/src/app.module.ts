@@ -3,7 +3,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PatientsModule } from './patients/patients.module';
+import { NotesModule } from './notes/notes.module';
 import { Patient } from './patients/patient.entity';
+import { Note } from './notes/note.entity';
 
 @Module({
   imports: [
@@ -14,11 +16,12 @@ import { Patient } from './patients/patient.entity';
       username: process.env.DB_USERNAME || 'postgres',
       password: process.env.DB_PASSWORD || 'password',
       database: process.env.DB_NAME || 'patients_db',
-      entities: [Patient],
-      synchronize: true,
+      entities: [Patient, Note],
+      synchronize: false,
       logging: false,
     }),
     PatientsModule,
+    NotesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

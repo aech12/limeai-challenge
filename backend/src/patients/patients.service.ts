@@ -10,15 +10,18 @@ export class PatientsService {
     private patientsRepository: Repository<Patient>,
   ) {}
 
-  findAll(): Promise<Patient[]> {
-    return this.patientsRepository.find();
+  async findAll(): Promise<Patient[]> {
+    return this.patientsRepository.find({ relations: ['notes'] });
   }
 
-  findOne(id: number): Promise<Patient | null> {
-    return this.patientsRepository.findOne({ where: { id } });
+  async findOne(id: number): Promise<Patient | null> {
+    return this.patientsRepository.findOne({
+      where: { id },
+      relations: ['notes'],
+    });
   }
 
-  create(patient: Patient): Promise<Patient> {
+  async create(patient: Patient): Promise<Patient> {
     return this.patientsRepository.save(patient);
   }
 }

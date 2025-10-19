@@ -7,12 +7,12 @@ export class PatientsController {
   constructor(private readonly patientsService: PatientsService) {}
 
   @Get()
-  findAll(): Promise<Patient[]> {
+  async findAll(): Promise<Patient[]> {
     return this.patientsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Patient | null> {
-    return this.patientsService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<Patient | null> {
+    return this.patientsService.findOne(parseInt(id, 10));
   }
 }
