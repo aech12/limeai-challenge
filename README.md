@@ -9,6 +9,8 @@ A full-stack application with NestJS backend and React frontend, both containeri
 
 ## Quick Start
 
+- Create the .env files for both backend and frontend according to the .env.example
+
 ```bash
 # Build and run containers on the base folder
 docker-compose up --build
